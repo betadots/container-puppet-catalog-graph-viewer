@@ -1,0 +1,1836 @@
+{
+  "data" : {
+    "name" : "muninn.boxnet.vlan",
+    "edges" : [ {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Agent"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "puppet"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Hiera"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:end"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Params"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Hiera"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Repos"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/yum makecache"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Agent"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Concat::Fragment",
+        "title" : "hostalias-bitbucket-r10k"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments/10_hostalias-bitbucket-r10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Hiera"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "R10k"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "r10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Products"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-products-source"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/r10k deploy environment -p"
+      },
+      "relationship" : "notifies"
+    }, {
+      "source" : {
+        "type" : "Anchor",
+        "title" : "server:r10k:start"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "R10k"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Deps"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-deps-source"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "git"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "target" : {
+        "type" : "Ini_setting",
+        "title" : "master site"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "Deploy_keys::Ssh_host_alias",
+        "title" : "bitbucket-r10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Concat::Setup"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments/10_hostalias-bitbucket-r10k"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "notifies"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "puppet-server"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Hosts"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Repos"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Hosts"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "R10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Deploy_keys::Ssh_host_alias",
+        "title" : "bitbucket-r10k"
+      },
+      "target" : {
+        "type" : "Concat::Fragment",
+        "title" : "hostalias-bitbucket-r10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Hiera"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/r10k deploy environment -p"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:r10k:end"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Node",
+        "title" : "default"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:start"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "R10k::Config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Hosts"
+      },
+      "target" : {
+        "type" : "Host",
+        "title" : "muninn.boxnet.vlan"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/root/.ssh/config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Deps"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-deps"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Products"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-products"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Concat::Setup"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/bin/concatfragments.sh"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/root/.ssh"
+      },
+      "target" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "subscription-of"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/etc/r10k.yaml"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/r10k deploy environment -p"
+      },
+      "relationship" : "subscription-of"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "target" : {
+        "type" : "Service",
+        "title" : "puppetmaster"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "R10k::Config"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/root/.ssh"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Concat::Setup"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Hiera"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/etc/hiera.yaml"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/root/.ssh/r10k-deploy"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "Package",
+        "title" : "puppet-server"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "git"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Package",
+        "title" : "git"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Settings"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "target" : {
+        "type" : "Ini_setting",
+        "title" : "master modulepath"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:r10k:end"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "notifies"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "target" : {
+        "type" : "Sshkey",
+        "title" : "bitbucket.org"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum"
+      },
+      "target" : {
+        "type" : "Puppetlabs_yum::Rpm_gpg_key",
+        "title" : "RPM-GPG-KEY-puppetlabs"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/etc/puppet/autosign.conf"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Anchor",
+        "title" : "server:start"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "puppet-server"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Hiera"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/etc/puppet/hiera.yaml"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/root/.ssh/config"
+      },
+      "relationship" : "notifies"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Devel"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-devel-source"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Package",
+        "title" : "puppet"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Config"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "import-RPM-GPG-KEY-puppetlabs"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "R10k::Config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/etc/r10k.yaml"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Puppetlabs_yum::Rpm_gpg_key",
+        "title" : "RPM-GPG-KEY-puppetlabs"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "import-RPM-GPG-KEY-puppetlabs"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Repos"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Deps"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Products"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "target" : {
+        "type" : "Ini_setting",
+        "title" : "agent environment"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/root/.ssh"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/root/.ssh/r10k-deploy"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Devel"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Config"
+      },
+      "target" : {
+        "type" : "Ini_setting",
+        "title" : "puppetmaster"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/r10k deploy environment -p"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::R10k"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:r10k:start"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/root/.ssh"
+      },
+      "target" : {
+        "type" : "Sshkey",
+        "title" : "bitbucket.org"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "concat_/root/.ssh/config"
+      },
+      "relationship" : "required-by"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat.out"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Concat::Setup"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/usr/local/bin/concatfragments.sh"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Deploy_keys"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "target" : {
+        "type" : "Service",
+        "title" : "puppetmaster"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "R10k"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "R10k::Config"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Repos"
+      },
+      "target" : {
+        "type" : "Package",
+        "title" : "puppet"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Concat",
+        "title" : "/root/.ssh/config"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/_root_.ssh_config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server::Config"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-products"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/yum makecache"
+      },
+      "relationship" : "subscription-of"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "main"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Puppetlabs_yum::Devel"
+      },
+      "target" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-devel"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Yumrepo",
+        "title" : "puppetlabs-deps"
+      },
+      "target" : {
+        "type" : "Exec",
+        "title" : "/usr/bin/yum makecache"
+      },
+      "relationship" : "subscription-of"
+    }, {
+      "source" : {
+        "type" : "Service",
+        "title" : "puppetmaster"
+      },
+      "target" : {
+        "type" : "Anchor",
+        "title" : "server:end"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Stage",
+        "title" : "main"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Hiera::Params"
+      },
+      "relationship" : "contains"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Agent"
+      },
+      "target" : {
+        "type" : "Class",
+        "title" : "Dasbooten::Server"
+      },
+      "relationship" : "before"
+    }, {
+      "source" : {
+        "type" : "Class",
+        "title" : "Concat::Setup"
+      },
+      "target" : {
+        "type" : "File",
+        "title" : "/var/lib/puppet/concat/bin"
+      },
+      "relationship" : "contains"
+    } ],
+    "resources" : [ {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "owner" : "root",
+        "group" : "root",
+        "replace" : true,
+        "ensure" : "present"
+      },
+      "line" : 157,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat.out",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "refreshonly" : true,
+        "before" : "Anchor[server:r10k:end]",
+        "subscribe" : "File[/etc/r10k.yaml]"
+      },
+      "line" : 10,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten::server::r10k", "exec", "dasbooten", "dasbooten::server", "class", "r10k" ],
+      "title" : "/usr/bin/r10k deploy environment -p",
+      "type" : "Exec"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "0750",
+        "owner" : "root",
+        "group" : "0",
+        "replace" : true,
+        "ensure" : "directory"
+      },
+      "line" : 54,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/setup.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::setup", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file", "setup" ],
+      "title" : "/var/lib/puppet/concat/bin",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "mode" : "0644",
+        "owner" : "puppet",
+        "content" : "---\n:backends: - yaml\n:logger: console\n:hierarchy:\n  - \"%{::certname}\"\n  - common\n\n:yaml:\n   :datadir: /etc/puppet/environments/%{environment}/extdata\n",
+        "group" : "puppet",
+        "ensure" : "present"
+      },
+      "line" : 77,
+      "file" : "/etc/puppet/environments/bootstrap/modules/hiera/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "hiera", "dasbooten::server", "class", "file", "dasbooten::server::hiera" ],
+      "title" : "/etc/puppet/hiera.yaml",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "owner" : "root",
+        "content" : "---\n:cachedir: /var/cache/r10k\n\n:sources:\n  sharpsteen_net: \n    basedir: /etc/puppet/environments\n    remote: \"ssh://git@bitbucket-r10k/sharpie/sharpsteen.net-modules.git\"\n\n:purgedirs:\n  - /etc/puppet/environments\n",
+        "group" : "root",
+        "ensure" : "file"
+      },
+      "line" : 55,
+      "file" : "/etc/puppet/environments/bootstrap/modules/r10k/manifests/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k", "r10k::config", "file" ],
+      "title" : "/etc/r10k.yaml",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Dependencies EL  - x86_64",
+        "baseurl" : "http://yum.puppetlabs.com/el//dependencies/x86_64",
+        "enabled" : "1",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "gpgcheck" : "1"
+      },
+      "line" : 12,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/deps.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "deps", "agent", "puppetlabs_yum", "puppetlabs_yum::deps", "dasbooten::repos", "dasbooten", "dasbooten::agent", "puppetlabs-deps", "class" ],
+      "title" : "puppetlabs-deps",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Server::Config]"
+      },
+      "line" : 18,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "hiera", "dasbooten::server", "class", "dasbooten::server::hiera" ],
+      "title" : "Dasbooten::Server::Hiera",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "path" : "/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs"
+      },
+      "line" : 28,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "puppetlabs_yum::rpm_gpg_key", "node", "agent", "puppetlabs_yum", "rpm_gpg_key", "dasbooten::repos", "dasbooten", "dasbooten::agent", "rpm-gpg-key-puppetlabs", "class" ],
+      "title" : "RPM-GPG-KEY-puppetlabs",
+      "type" : "Puppetlabs_yum::Rpm_gpg_key"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "0755",
+        "owner" : "root",
+        "group" : "0",
+        "source" : "puppet:///modules/concat/concatfragments.sh",
+        "replace" : true
+      },
+      "line" : 54,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/setup.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::setup", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file", "setup" ],
+      "title" : "/var/lib/puppet/concat/bin/concatfragments.sh",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Repos]"
+      },
+      "line" : 2,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/agent.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "agent", "hosts", "dasbooten", "dasbooten::agent", "class", "dasbooten::hosts" ],
+      "title" : "Dasbooten::Hosts",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "name" : "main",
+        "alias" : [ "main" ]
+      },
+      "exported" : false,
+      "tags" : [ "class" ],
+      "title" : "main",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "datadir" : "/etc/puppet/environments/%{environment}/extdata",
+        "owner" : "puppet",
+        "hiera_yaml" : "/etc/puppet/hiera.yaml",
+        "hierarchy" : [ "%{::certname}", "common" ],
+        "group" : "puppet"
+      },
+      "line" : 10,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/hiera.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "hiera", "dasbooten::server", "class", "dasbooten::server::hiera" ],
+      "title" : "Hiera",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "require" : "File[/root/.ssh]",
+        "key" : "AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==",
+        "target" : "/root/.ssh/known_hosts",
+        "type" : "ssh-rsa",
+        "ensure" : "present"
+      },
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "bitbucket.org", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "sshkey", "class", "r10k" ],
+      "title" : "bitbucket.org",
+      "type" : "Sshkey"
+    }, {
+      "parameters" : {
+        "mode" : "0644",
+        "owner" : "puppet",
+        "target" : "/etc/puppet/hiera.yaml",
+        "group" : "puppet",
+        "ensure" : "symlink"
+      },
+      "line" : 82,
+      "file" : "/etc/puppet/environments/bootstrap/modules/hiera/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "hiera", "dasbooten::server", "class", "file", "dasbooten::server::hiera" ],
+      "title" : "/etc/hiera.yaml",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Source Dependencies EL  - x86_64 - Source",
+        "baseurl" : "http://yum.puppetlabs.com/el//dependencies/SRPMS",
+        "enabled" : "0",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "gpgcheck" : "1"
+      },
+      "line" : 19,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/deps.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "deps", "agent", "puppetlabs_yum", "puppetlabs_yum::deps", "dasbooten::repos", "dasbooten", "puppetlabs-deps-source", "dasbooten::agent", "class" ],
+      "title" : "puppetlabs-deps-source",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "mode" : "700",
+        "owner" : "root",
+        "group" : "root",
+        "ensure" : "directory"
+      },
+      "line" : 44,
+      "file" : "/etc/puppet/environments/bootstrap/modules/deploy_keys/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/root/.ssh",
+      "type" : "File"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "deps", "agent", "puppetlabs_yum", "puppetlabs_yum::deps", "dasbooten::repos", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "Puppetlabs_yum::Deps",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "owner" : "root",
+        "group" : "root",
+        "alias" : "concat_/root/.ssh/config",
+        "source" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat.out",
+        "replace" : true,
+        "ensure" : "present"
+      },
+      "line" : 167,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/root/.ssh/config",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "0644",
+        "owner" : "root",
+        "content" : "Host bitbucket-r10k\n  HostName bitbucket.org\n  IdentityFile /root/.ssh/r10k-deploy\n",
+        "notify" : "Exec[concat_/root/.ssh/config]",
+        "group" : "0",
+        "alias" : "concat_fragment_hostalias-bitbucket-r10k",
+        "ensure" : "present"
+      },
+      "line" : 66,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/fragment.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::fragment", "deploy_keys", "dasbooten::server::r10k", "fragment", "bitbucket-r10k", "ssh_host_alias", "dasbooten", "concat", "dasbooten::server", "hostalias-bitbucket-r10k", "class", "r10k", "deploy_keys::ssh_host_alias", "file" ],
+      "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments/10_hostalias-bitbucket-r10k",
+      "type" : "File"
+    }, {
+      "parameters" : { },
+      "line" : 11,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten::server::r10k", "dasbooten", "server:r10k:end", "dasbooten::server", "anchor", "class", "r10k" ],
+      "title" : "server:r10k:end",
+      "type" : "Anchor"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::setup", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "setup" ],
+      "title" : "Concat::Setup",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Class[R10k::Config]",
+        "ensure" : "1.1.1"
+      },
+      "line" : 4,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k" ],
+      "title" : "R10k",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Package[git]",
+        "ensure" : "latest"
+      },
+      "line" : 15,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "package", "dasbooten", "dasbooten::server", "class", "puppet-server" ],
+      "title" : "puppet-server",
+      "type" : "Package"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "products", "agent", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::products", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "Puppetlabs_yum::Products",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Server::R10k]",
+        "ensure" : "latest"
+      },
+      "line" : 16,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "package", "dasbooten", "git", "dasbooten::server", "class" ],
+      "title" : "git",
+      "type" : "Package"
+    }, {
+      "parameters" : {
+        "path" : "/etc/puppet/puppet.conf",
+        "section" : "master",
+        "value" : "$confdir/environments/$environment/modules:$confdir/environments/$environment/dist",
+        "setting" : "modulepath",
+        "ensure" : "present"
+      },
+      "line" : 30,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten", "dasbooten::server", "ini_setting", "dasbooten::server::config", "class" ],
+      "title" : "master modulepath",
+      "type" : "Ini_setting"
+    }, {
+      "parameters" : {
+        "path" : "/etc/puppet/puppet.conf",
+        "section" : "agent",
+        "value" : "puppetmaster",
+        "setting" : "environment",
+        "ensure" : "present"
+      },
+      "line" : 14,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten", "dasbooten::server", "ini_setting", "dasbooten::server::config", "class" ],
+      "title" : "agent environment",
+      "type" : "Ini_setting"
+    }, {
+      "parameters" : {
+        "puppetmaster_fqdn" : "muninn.boxnet.vlan"
+      },
+      "line" : 5,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/agent.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "agent", "dasbooten", "dasbooten::config", "dasbooten::agent", "class" ],
+      "title" : "Dasbooten::Config",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Service[puppetmaster]"
+      },
+      "line" : 19,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten", "dasbooten::server", "dasbooten::server::config", "class" ],
+      "title" : "Dasbooten::Server::Config",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "enable_devel" : false
+      },
+      "line" : 6,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/repos.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "puppetlabs_yum", "dasbooten::repos", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "Puppetlabs_yum",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Products EL  - x86_64",
+        "baseurl" : "http://yum.puppetlabs.com/el//products/x86_64",
+        "enabled" : "1",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "gpgcheck" : "1"
+      },
+      "line" : 10,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/products.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "products", "agent", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::products", "dasbooten", "dasbooten::agent", "puppetlabs-products", "class" ],
+      "title" : "puppetlabs-products",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "check_host_key" : true,
+        "hostname" : "bitbucket.org",
+        "identityfile" : "/root/.ssh/r10k-deploy"
+      },
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "bitbucket-r10k", "ssh_host_alias", "dasbooten", "dasbooten::server", "class", "r10k", "deploy_keys::ssh_host_alias" ],
+      "title" : "bitbucket-r10k",
+      "type" : "Deploy_keys::Ssh_host_alias"
+    }, {
+      "parameters" : {
+        "purgedirs" : "/etc/puppet/environments",
+        "cachedir" : "/var/cache/r10k",
+        "before" : "Class[Deploy_keys]",
+        "sources" : {
+          "sharpsteen_net" : {
+            "remote" : "ssh://git@bitbucket-r10k/sharpie/sharpsteen.net-modules.git",
+            "basedir" : "/etc/puppet/environments"
+          }
+        }
+      },
+      "line" : 5,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k", "r10k::config" ],
+      "title" : "R10k::Config",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "content" : "*.boxnet\n",
+        "ensure" : "file"
+      },
+      "line" : 6,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten", "dasbooten::server", "dasbooten::server::config", "class", "file" ],
+      "title" : "/etc/puppet/autosign.conf",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "refreshonly" : true,
+        "subscribe" : [ "Yumrepo[puppetlabs-deps]", "Yumrepo[puppetlabs-products]" ]
+      },
+      "line" : 11,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/repos.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "dasbooten::repos", "exec", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "/usr/bin/yum makecache",
+      "type" : "Exec"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Products EL  - x86_64 - Source",
+        "baseurl" : "http://yum.puppetlabs.com/el//products/SRPMS",
+        "enabled" : "0",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "failovermethod" : "priority",
+        "gpgcheck" : "1"
+      },
+      "line" : 19,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/products.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "products", "agent", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::products", "puppetlabs-products-source", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "puppetlabs-products-source",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "0644",
+        "owner" : "root",
+        "content" : "Host bitbucket-r10k\n  HostName bitbucket.org\n  IdentityFile /root/.ssh/r10k-deploy\n",
+        "target" : "/root/.ssh/config",
+        "group" : "0",
+        "order" : "10",
+        "ensure" : "present"
+      },
+      "line" : 41,
+      "file" : "/etc/puppet/environments/bootstrap/modules/deploy_keys/manifests/ssh_host_alias.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::fragment", "deploy_keys", "dasbooten::server::r10k", "fragment", "bitbucket-r10k", "ssh_host_alias", "dasbooten", "concat", "dasbooten::server", "hostalias-bitbucket-r10k", "class", "r10k", "deploy_keys::ssh_host_alias" ],
+      "title" : "hostalias-bitbucket-r10k",
+      "type" : "Concat::Fragment"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "notify" : "Exec[concat_/root/.ssh/config]",
+        "purge" : true,
+        "force" : true,
+        "ignore" : [ ".svn", ".git", ".gitignore" ],
+        "owner" : "root",
+        "replace" : true,
+        "ensure" : "directory",
+        "recurse" : true,
+        "group" : "root"
+      },
+      "line" : 149,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "notify" : "Exec[/usr/bin/r10k deploy environment -p]",
+        "ssh_host_aliases" : {
+          "bitbucket-r10k" : {
+            "hostname" : "bitbucket.org",
+            "identityfile" : "/root/.ssh/r10k-deploy"
+          }
+        },
+        "host_keys" : {
+          "bitbucket.org" : {
+            "key" : "AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw=="
+          }
+        },
+        "ssh_keys" : {
+          "/root/.ssh/r10k-deploy" : {
+            "content" : "-----BEGIN RSA PRIVATE KEY-----\n-----END RSA PRIVATE KEY-----\n"
+          }
+        }
+      },
+      "line" : 6,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k" ],
+      "title" : "Deploy_keys",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Package[puppet-server]"
+      },
+      "line" : 11,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "server:start", "dasbooten", "dasbooten::server", "anchor", "class" ],
+      "title" : "server:start",
+      "type" : "Anchor"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "params", "puppetlabs_yum", "dasbooten::repos", "dasbooten", "puppetlabs_yum::params", "dasbooten::agent", "class" ],
+      "title" : "Puppetlabs_yum::Params",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Config]",
+        "ensure" : "latest"
+      },
+      "line" : 4,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/agent.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "agent", "package", "dasbooten", "dasbooten::agent", "puppet", "class" ],
+      "title" : "puppet",
+      "type" : "Package"
+    }, {
+      "parameters" : { },
+      "line" : 3,
+      "file" : "/etc/puppet/environments/bootstrap/manifests/site.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "dasbooten::server", "class" ],
+      "title" : "Dasbooten::Server",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "owner" : "root",
+        "group" : "root",
+        "replace" : true,
+        "ensure" : "directory"
+      },
+      "line" : 134,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/var/lib/puppet/concat/_root_.ssh_config",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "mode" : "0644",
+        "owner" : "0",
+        "group" : "0",
+        "source" : "puppet:///modules/puppetlabs_yum/RPM-GPG-KEY-puppetlabs",
+        "ensure" : "present"
+      },
+      "line" : 36,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "puppetlabs_yum", "dasbooten::repos", "dasbooten", "dasbooten::agent", "class", "file" ],
+      "title" : "/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+      "type" : "File"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "settings", "class" ],
+      "title" : "Settings",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "path" : "/etc/puppet/puppet.conf",
+        "section" : "agent",
+        "value" : "muninn.boxnet.vlan",
+        "setting" : "server",
+        "ensure" : "present"
+      },
+      "line" : 10,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "agent", "dasbooten", "dasbooten::config", "dasbooten::agent", "ini_setting", "puppetmaster", "class" ],
+      "title" : "puppetmaster",
+      "type" : "Ini_setting"
+    }, {
+      "parameters" : {
+        "path" : "/bin:/usr/bin:/sbin:/usr/sbin",
+        "require" : "File[/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs]",
+        "logoutput" : "on_failure",
+        "unless" : "rpm -q gpg-pubkey-`$(echo $(gpg --throw-keyids < /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs) | cut --characters=11-18 | tr [A-Z] [a-z])`",
+        "command" : "rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs"
+      },
+      "line" : 10,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/rpm_gpg_key.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "puppetlabs_yum::rpm_gpg_key", "node", "agent", "puppetlabs_yum", "rpm_gpg_key", "dasbooten::repos", "exec", "dasbooten", "dasbooten::agent", "rpm-gpg-key-puppetlabs", "class", "import-rpm-gpg-key-puppetlabs" ],
+      "title" : "import-RPM-GPG-KEY-puppetlabs",
+      "type" : "Exec"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Devel EL  - x86_64",
+        "baseurl" : "http://yum.puppetlabs.com/el//devel/x86_64",
+        "enabled" : "0",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "gpgcheck" : "1"
+      },
+      "line" : 18,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/devel.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "agent", "puppetlabs-devel", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::devel", "dasbooten", "dasbooten::agent", "class", "devel" ],
+      "title" : "puppetlabs-devel",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "path" : "/etc/puppet/puppet.conf",
+        "section" : "master",
+        "value" : "$confdir/environments/$environment/manifests/site.pp",
+        "setting" : "manifest",
+        "ensure" : "present"
+      },
+      "line" : 22,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/config.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "config", "server", "dasbooten", "dasbooten::server", "ini_setting", "dasbooten::server::config", "class" ],
+      "title" : "master site",
+      "type" : "Ini_setting"
+    }, {
+      "parameters" : {
+        "enable" : true,
+        "before" : "Anchor[server:end]",
+        "ensure" : "running"
+      },
+      "line" : 20,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten", "dasbooten::server", "service", "puppetmaster", "class" ],
+      "title" : "puppetmaster",
+      "type" : "Service"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "params", "dasbooten", "hiera", "dasbooten::server", "class", "hiera::params", "dasbooten::server::hiera" ],
+      "title" : "Hiera::Params",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "0750",
+        "owner" : "root",
+        "group" : "0",
+        "replace" : true,
+        "ensure" : "directory"
+      },
+      "line" : 54,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/setup.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::setup", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file", "setup" ],
+      "title" : "/var/lib/puppet/concat",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "descr" : "Puppet Labs Devel EL  - x86_64 - Source",
+        "baseurl" : "http://yum.puppetlabs.com/el//devel/SRPMS",
+        "enabled" : "0",
+        "gpgkey" : "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs",
+        "gpgcheck" : "1"
+      },
+      "line" : 26,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/devel.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "yumrepo", "agent", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::devel", "dasbooten", "dasbooten::agent", "class", "devel", "puppetlabs-devel-source" ],
+      "title" : "puppetlabs-devel-source",
+      "type" : "Yumrepo"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "path" : "/root/.ssh/config",
+        "require" : "File[/root/.ssh]",
+        "warn" : false,
+        "force" : false,
+        "order" : "alpha",
+        "ensure_newline" : false,
+        "owner" : "root",
+        "replace" : true,
+        "group" : "root"
+      },
+      "line" : 66,
+      "file" : "/etc/puppet/environments/bootstrap/modules/deploy_keys/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k" ],
+      "title" : "/root/.ssh/config",
+      "type" : "Concat"
+    }, {
+      "parameters" : {
+        "enable_devel" : false
+      },
+      "line" : 24,
+      "file" : "/etc/puppet/environments/bootstrap/modules/puppetlabs_yum/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "puppetlabs_yum", "dasbooten::repos", "puppetlabs_yum::devel", "dasbooten", "dasbooten::agent", "class", "devel" ],
+      "title" : "Puppetlabs_yum::Devel",
+      "type" : "Class"
+    }, {
+      "parameters" : { },
+      "line" : 21,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "server:end", "dasbooten", "dasbooten::server", "anchor", "class" ],
+      "title" : "server:end",
+      "type" : "Anchor"
+    }, {
+      "parameters" : { },
+      "exported" : false,
+      "tags" : [ "default", "node", "class" ],
+      "title" : "default",
+      "type" : "Node"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "owner" : "root",
+        "group" : "root",
+        "replace" : true,
+        "ensure" : "absent"
+      },
+      "line" : 54,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/setup.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "concat::setup", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file", "setup" ],
+      "title" : "/usr/local/bin/concatfragments.sh",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "provider" : "gem",
+        "ensure" : "1.1.1"
+      },
+      "line" : 26,
+      "file" : "/etc/puppet/environments/bootstrap/modules/r10k/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "package", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k" ],
+      "title" : "r10k",
+      "type" : "Package"
+    }, {
+      "parameters" : {
+        "require" : [ "File[/var/lib/puppet/concat/_root_.ssh_config/fragments.concat]", "File[/var/lib/puppet/concat/_root_.ssh_config/fragments]", "File[/var/lib/puppet/concat/_root_.ssh_config]" ],
+        "notify" : "File[/root/.ssh/config]",
+        "user" : "root",
+        "unless" : "/var/lib/puppet/concat/bin/concatfragments.sh -o /var/lib/puppet/concat/_root_.ssh_config/fragments.concat.out -d /var/lib/puppet/concat/_root_.ssh_config -t    ",
+        "group" : "root",
+        "alias" : "concat_/var/lib/puppet/concat/_root_.ssh_config",
+        "command" : "/var/lib/puppet/concat/bin/concatfragments.sh -o /var/lib/puppet/concat/_root_.ssh_config/fragments.concat.out -d /var/lib/puppet/concat/_root_.ssh_config    ",
+        "subscribe" : "File[/var/lib/puppet/concat/_root_.ssh_config]"
+      },
+      "line" : 180,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "exec", "dasbooten", "concat", "dasbooten::server", "class", "r10k" ],
+      "title" : "concat_/root/.ssh/config",
+      "type" : "Exec"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Server::Hiera]"
+      },
+      "line" : 17,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k" ],
+      "title" : "Dasbooten::Server::R10k",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "name" : "main",
+        "alias" : [ "main" ]
+      },
+      "exported" : false,
+      "tags" : [ "stage" ],
+      "title" : "main",
+      "type" : "Stage"
+    }, {
+      "parameters" : {
+        "ip" : "127.0.1.1",
+        "host_aliases" : [ "muninn", "puppetmaster" ],
+        "ensure" : "present"
+      },
+      "exported" : false,
+      "tags" : [ "default", "node", "agent", "host", "hosts", "dasbooten", "dasbooten::agent", "muninn.boxnet.vlan", "class", "dasbooten::hosts" ],
+      "title" : "muninn.boxnet.vlan",
+      "type" : "Host"
+    }, {
+      "parameters" : {
+        "before" : "Class[Dasbooten::Server]"
+      },
+      "line" : 2,
+      "file" : "/etc/puppet/environments/bootstrap/manifests/site.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "agent", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "Dasbooten::Agent",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "before" : "Class[R10k]"
+      },
+      "line" : 3,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/server/r10k.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "anchor", "class", "server:r10k:start", "r10k" ],
+      "title" : "server:r10k:start",
+      "type" : "Anchor"
+    }, {
+      "parameters" : {
+        "before" : "Package[puppet]"
+      },
+      "line" : 3,
+      "file" : "/etc/puppet/environments/bootstrap/site/dasbooten/manifests/agent.pp",
+      "exported" : false,
+      "tags" : [ "default", "repos", "node", "agent", "dasbooten::repos", "dasbooten", "dasbooten::agent", "class" ],
+      "title" : "Dasbooten::Repos",
+      "type" : "Class"
+    }, {
+      "parameters" : {
+        "backup" : "puppet",
+        "mode" : "600",
+        "owner" : "root",
+        "group" : "root",
+        "replace" : true,
+        "ensure" : "present"
+      },
+      "line" : 153,
+      "file" : "/etc/puppet/environments/bootstrap/modules/concat/manifests/init.pp",
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "concat", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/var/lib/puppet/concat/_root_.ssh_config/fragments.concat",
+      "type" : "File"
+    }, {
+      "parameters" : {
+        "require" : "File[/root/.ssh]",
+        "mode" : "600",
+        "owner" : "root",
+        "content" : "-----BEGIN RSA PRIVATE KEY-----\n-----END RSA PRIVATE KEY-----\n",
+        "group" : "root",
+        "ensure" : "file"
+      },
+      "exported" : false,
+      "tags" : [ "default", "node", "server", "deploy_keys", "dasbooten::server::r10k", "dasbooten", "dasbooten::server", "class", "r10k", "file" ],
+      "title" : "/root/.ssh/r10k-deploy",
+      "type" : "File"
+    } ],
+    "version" : "1389236382",
+    "transaction-uuid" : null
+  },
+  "metadata" : {
+    "api_version" : 1
+  }
+}

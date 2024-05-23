@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset=utf-8 />
+    <style>
+      body {
+          font: 10px sans-serif;
+      }
+
+      /* Quick hack to line the viewport up with the top of the page */
+      svg {
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+      }
+
+      .node {
+        stroke: #fff;
+        stroke-width: 1.5px;
+      }
+
+      .link {
+        fill: none;
+        stroke: #999;
+        stroke-opacity: .6;
+        stroke-width: 1.5px;
+      }
+
+      .d3-tip {
+        line-height: 1;
+        font-weight: bold;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+      <input type="radio" name="vis-select" value="cartesian" checked="checked" id="to-cartesian">
+      <label for="to-cartesian">Cartesian</label>
+      <input type="radio" name="vis-select" value="polar" id="to-polar">
+      <label for="to-polar">Polar</label>
+    </form>
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+    <script src="/hierarchy_graph.js"></script>
+  </body>
+
+</html>
