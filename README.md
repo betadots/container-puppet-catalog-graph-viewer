@@ -14,8 +14,8 @@ docker build -t puppet-catalog-graph-viewer .
 
 ```shell
 # run with demo data
-docker run --rm -p 8080:80 puppet-catalog-graph-viewer
+docker run -it --rm -p 8080:80 puppet-catalog-graph-viewer
 # or mount path with dot files
 # file has to be named `catalog.json`
-docker run --rm -p 8080:80 -v $(pwd):/usr/share/nginx/html/data puppet-catalog-graph-viewer
+docker run -it --rm -p 8080:80 -v $(pwd):/usr/share/nginx/html/data puppet-catalog-graph-viewer
 ```
